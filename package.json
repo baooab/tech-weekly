@@ -1,0 +1,23 @@
+{
+  "name": "tech-weekly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baooab/tech-weekly.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/baooab/tech-weekly/issues"
+  },
+  "homepage": "https://github.com/baooab/tech-weekly#readme",
+  "dependencies": {
+    "rss-parser": "^3.12.0"
+  }
+}
