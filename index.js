@@ -6,11 +6,11 @@ let parser = new Parser({
 const fs = require('fs/promises');
 const process = require('process');
 
-
 async function main() {
-    const url = 'https://cprss.s3.amazonaws.com/javascriptweekly.com.xml';
-
-    let feed = await parser.parseURL(url);
+    const [jsFeed, feFeed] = await Promise.all([
+      parser.parseURL('https://cprss.s3.amazonaws.com/frontendfoc.us.xml'),
+      parser.parseURL('https://cprss.s3.amazonaws.com/javascriptweekly.com.xml')
+    ]);
 
     console.log(`successfully generating new feed.`);
 
@@ -20,8 +20,11 @@ async function main() {
     await fs.mkdir('./dist');
     console.log(`successfully create ./dist`);
 
-    await fs.writeFile('./dist/rss.json', JSON.stringify(feed));
-    console.log(`successfully write rss.json`);
+    await fs.writeFile('./dist/js.json', JSON.stringify(jsFeed));
+    console.log(`successfully write js.json`);
+
+    await fs.writeFile('./dist/fe.json', JSON.stringify(feFeed));
+    console.log(`successfully write fe.json`);
 
     await fs.copyFile('./template/index.html', `./dist/index.html`);
     await fs.copyFile('./template/page.js', `./dist/page.js`);
