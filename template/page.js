@@ -8,24 +8,21 @@
       const issues = document.querySelector(selector);
       const fragment = document.createDocumentFragment();
   
-      const title = document.createElement('div');
+      const title = document.createElement('summary');
       title.innerText = res.title
-      title.classList.add('is-6', 'title')
-      // const description = document.createElement('small');
-      // description.innerText = res.description;
-      // description.classList.add('ml-3')
-      // title.appendChild(description)
+      title.classList.add('is-4', 'title')
 
       fragment.appendChild(title)
 
       items.forEach(i => {
         const issue = document.createElement('details');
         const h2 = document.createElement('summary');
+        h2.classList.add('title', 'is-5', 'mb-2')
         const content = document.createElement('div');
-        content.classList.add('issue-content')
+        content.classList.add('issue-content', 'notification',  'px-1', 'py-3')
         const timeObj = new Date(i.pubDate);
         const weekDays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
-        h2.innerHTML = `${i.title} （<a href="${i.link}" target="_blank">${timeObj.toLocaleDateString()} ${weekDays[timeObj.getDay()]}</a>）`;
+        h2.innerHTML = `${i.title} （${timeObj.toLocaleDateString()} ${weekDays[timeObj.getDay()]} <a href="${i.link}" target="_blank" title=""></a>）`;
         content.innerHTML = i.content;
   
         issue.appendChild(h2);
