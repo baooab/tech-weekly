@@ -10,14 +10,13 @@
   
       const title = document.createElement('summary');
       title.innerText = res.title
-      title.classList.add('is-4', 'title')
+      title.classList.add('title', 'is-5', 'mb-2')
 
       fragment.appendChild(title)
 
       items.forEach(i => {
         const issue = document.createElement('details');
         const h2 = document.createElement('summary');
-        h2.classList.add('title', 'is-5', 'mb-2')
         const content = document.createElement('div');
         content.classList.add('issue-content', 'notification',  'px-1', 'py-3')
         const timeObj = new Date(i.pubDate);
